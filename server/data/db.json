@@ -1,0 +1,67 @@
+{
+  "listings": [
+    {
+      "id": "lst_aurora_48",
+      "title": "Aurora 48",
+      "segment": "ins",
+      "location": "Tuzla",
+      "year": 2025,
+      "status": "Teklifte",
+      "coverImage": "images/concepts/yacht_2.jpg",
+      "highlights": ["Alüminyum Gövde", "Özel İç Mekan"],
+      "videoUrl": "",
+      "gallery": ["images/concepts/yacht_2.jpg", "images/concepts/yacht_8.jpg"],
+      "description": "48 ft özel inşa proje. Gövde tasarımı ve iç mekan planlaması devam ediyor.",
+      "createdAt": "2025-01-04T10:00:00.000Z",
+      "updatedAt": "2025-01-04T10:00:00.000Z",
+      "stats": {
+        "messages": 0,
+        "follows": 0,
+        "comments": 0
+      }
+    },
+    {
+      "id": "lst_ege_refit_32",
+      "title": "Ege Refit 32",
+      "segment": "refit",
+      "location": "Göcek",
+      "year": 2024,
+      "status": "Aktif",
+      "coverImage": "images/concepts/yacht_4.jpg",
+      "highlights": ["Makine Revizyonu", "Güverte Yenileme"],
+      "videoUrl": "",
+      "gallery": ["images/concepts/yacht_4.jpg", "images/concepts/yacht_3.jpg"],
+      "description": "32 ft tekne için boya, gövde ve sistem yenileme paketi.",
+      "createdAt": "2025-01-02T09:30:00.000Z",
+      "updatedAt": "2025-01-03T16:10:00.000Z",
+      "stats": {
+        "messages": 0,
+        "follows": 0,
+        "comments": 0
+      }
+    },
+    {
+      "id": "lst_marmara_bakim_24",
+      "title": "Marmara Bakım 24",
+      "segment": "bakim",
+      "location": "İstanbul",
+      "year": 2024,
+      "status": "Planlandı",
+      "coverImage": "images/concepts/yacht_6.jpg",
+      "highlights": ["Boya", "Elektrik Sistemleri"],
+      "videoUrl": "",
+      "gallery": ["images/concepts/yacht_6.jpg", "images/concepts/yacht_9.jpg"],
+      "description": "Sezon öncesi periyodik bakım ve sistem kontrolü.",
+      "createdAt": "2024-12-18T14:20:00.000Z",
+      "updatedAt": "2024-12-20T11:45:00.000Z",
+      "stats": {
+        "messages": 0,
+        "follows": 0,
+        "comments": 0
+      }
+    }
+  ],
+  "messages": [],
+  "comments": [],
+  "follows": []
+}

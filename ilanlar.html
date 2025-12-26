@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>YKP Marine | İlanlar</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="page">
+    <div class="container">
+      <header class="site-header">
+        <a class="brand" href="index.html">
+          <img src="images/ykp-marine-logo-with-text.png" alt="YKP Marine logo">
+          <span>YKP Marine</span>
+        </a>
+        <nav class="site-nav" data-nav>
+          <a class="nav-link" href="index.html">Anasayfa</a>
+          <a class="nav-link is-active" href="ilanlar.html">İlanlar</a>
+          <a class="nav-link" href="hizmetlerimiz.html">Hizmetlerimiz</a>
+          <a class="nav-link" href="projeler.html">Projeler</a>
+          <a class="nav-link" href="hakkimizda.html">Hakkımızda</a>
+          <a class="nav-link" href="iletisim.html">İletişim</a>
+          <div class="nav-cta">
+            <a class="btn primary" href="iletisim.html">Teklif Al</a>
+            <a class="btn ghost" href="projeler.html">Projeleri Gör</a>
+          </div>
+        </nav>
+        <div class="header-actions">
+          <a class="btn light header-cta" href="iletisim.html">Teklif Al</a>
+          <button class="nav-toggle" type="button" data-nav-toggle aria-label="Menüyü aç" aria-expanded="false">
+            <span></span>
+          </button>
+        </div>
+      </header>
+      <div class="nav-overlay" data-nav-overlay></div>
+
+      <main>
+        <section class="page-hero" data-reveal>
+          <div class="eyebrow">İlanlar</div>
+          <h1>Güncel inşa, bakım ve refit projeleri</h1>
+          <p>Proje durumları ve segment bilgileri canlı API üzerinden güncellenir. Dilerseniz filtreleyerek size uygun süreçleri görüntüleyin.</p>
+        </section>
+
+        <section class="section" data-listings>
+          <div class="listings-toolbar" data-reveal>
+            <input class="input" type="search" placeholder="Proje adı veya lokasyon ara" data-listing-search>
+            <select class="select" data-listing-type>
+              <option value="all">Tüm Segmentler</option>
+              <option value="ins">Yeni İnşa</option>
+              <option value="refit">Refit</option>
+              <option value="bakim">Bakım</option>
+              <option value="destek">Destek</option>
+            </select>
+          </div>
+          <div class="listing-status" data-listing-status>İlanlar yükleniyor...</div>
+          <div class="listing-grid" data-listing-grid></div>
+        </section>
+
+        <section class="section section-highlight" data-reveal>
+          <div class="listing-preview">
+            <div>
+              <h2 class="section-title">İlanları yayınlamadan önce</h2>
+              <p class="section-subtitle">Her proje, tasarım ve üretim planı ile birlikte şeffaf bir şekilde paylaşılır. Maliyet, süre ve teknik kapsam hakkında net bilgilendirme sağlarız.</p>
+              <div class="hero-actions">
+                <a class="btn primary" href="iletisim.html">Danışmanlık Talep Et</a>
+                <a class="btn ghost" href="hizmetlerimiz.html">Hizmet Akışını Gör</a>
+              </div>
+            </div>
+            <div class="listing-mini-grid">
+              <div class="listing-mini">
+                <strong>Planlama</strong>
+                <span>Çizim, bütçe, zaman çizelgesi</span>
+              </div>
+              <div class="listing-mini">
+                <strong>Uygulama</strong>
+                <span>İnşa, refit, sistem entegrasyonu</span>
+              </div>
+              <div class="listing-mini">
+                <strong>Teslimat</strong>
+                <span>Test, kalite kontrol, klas onayı</span>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer class="footer">
+        <div class="footer-grid">
+          <div>
+            <h4>YKP Marine</h4>
+            <p>Yat inşa, refit ve bakım hizmetlerinde uzmanlaşmış tersane ve proje yönetimi markası.</p>
+          </div>
+          <div>
+            <h4>Hızlı Menü</h4>
+            <a href="ilanlar.html">İlanlar</a><br>
+            <a href="hizmetlerimiz.html">Hizmetlerimiz</a><br>
+            <a href="projeler.html">Projeler</a>
+          </div>
+          <div>
+            <h4>İletişim</h4>
+            <p>Tuzla, İstanbul</p>
+            <p>+90 216 000 00 00</p>
+            <p>info@ykpmarine.com.tr</p>
+          </div>
+        </div>
+        <div class="footer-note">(c) 2025 YKP Marine. Tüm hakları saklıdır.</div>
+      </footer>
+    </div>
+  </div>
+
+  <script src="js/script.js"></script>
+</body>
+</html>

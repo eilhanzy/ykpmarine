@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>YKP Marine | Admin Paneli</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+  <div class="page">
+    <div class="container">
+      <header class="site-header">
+        <a class="brand" href="index.html">
+          <img src="images/ykp-marine-logo-with-text.png" alt="YKP Marine logo">
+          <span>YKP Marine</span>
+        </a>
+        <div class="header-actions">
+          <a class="btn light" href="index.html">Siteye Dön</a>
+        </div>
+      </header>
+
+      <main>
+        <section class="page-hero">
+          <div class="eyebrow">Admin</div>
+          <h1>İlan ve mesaj yönetimi</h1>
+          <p>Whitelist anahtarınız ile ilanları yönetin, mesajları ve takipleri takip edin.</p>
+        </section>
+
+        <section class="section admin-grid">
+          <div class="admin-card">
+            <h2>Yetkilendirme</h2>
+            <p class="admin-note">API anahtarınızı girin ve kaydedin.</p>
+            <label>
+              API Anahtarı
+              <input class="input" type="password" data-admin-key placeholder="x-api-key">
+            </label>
+            <div class="admin-actions">
+              <button class="btn primary" type="button" data-save-key>Kaydet</button>
+              <button class="btn ghost" type="button" data-refresh>Yenile</button>
+            </div>
+            <div class="admin-status" data-admin-status></div>
+          </div>
+
+          <div class="admin-card">
+            <h2>Yeni İlan</h2>
+            <form data-listing-form>
+              <label>
+                Başlık
+                <input class="input" name="title" type="text" required>
+              </label>
+              <label>
+                Segment
+                <select class="select" name="segment">
+                  <option value="ins">Yeni İnşa</option>
+                  <option value="refit">Refit</option>
+                  <option value="bakim">Bakım</option>
+                  <option value="destek">Destek</option>
+                </select>
+              </label>
+              <label>
+                Lokasyon
+                <input class="input" name="location" type="text" placeholder="Tuzla">
+              </label>
+              <label>
+                Yıl
+                <input class="input" name="year" type="number" placeholder="2025">
+              </label>
+              <label>
+                Durum
+                <input class="input" name="status" type="text" placeholder="Planlanıyor">
+              </label>
+              <label>
+                Kapak Görseli
+                <input class="input" name="coverImage" type="text" placeholder="images/concepts/yacht_1.jpg">
+              </label>
+              <label>
+                Video URL
+                <input class="input" name="videoUrl" type="url" placeholder="https://">
+              </label>
+              <label>
+                Öne Çıkanlar (virgül ile)
+                <input class="input" name="highlights" type="text" placeholder="Alüminyum gövde, Özel iç mekan">
+              </label>
+              <label>
+                Açıklama
+                <textarea class="input" name="description" rows="4" placeholder="Proje detayı"></textarea>
+              </label>
+              <button class="btn primary" type="submit">İlanı Kaydet</button>
+            </form>
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="section-header">
+            <div>
+              <h2 class="section-title">İlanlar</h2>
+              <p class="section-subtitle">İlgiye göre sıralanan ilan listesi.</p>
+            </div>
+          </div>
+          <div class="admin-list" data-admin-listings></div>
+        </section>
+
+        <section class="section">
+          <div class="section-header">
+            <div>
+              <h2 class="section-title">Mesajlar</h2>
+              <p class="section-subtitle">İlanlara gelen talepler.</p>
+            </div>
+          </div>
+          <div class="admin-list" data-admin-messages></div>
+        </section>
+      </main>
+
+      <footer class="footer">
+        <div class="footer-note">(c) 2025 YKP Marine. Tüm hakları saklıdır.</div>
+      </footer>
+    </div>
+  </div>
+
+  <script src="js/admin.js"></script>
+</body>
+</html>

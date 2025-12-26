@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>YKP Marine | İletişim</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="page">
+    <div class="container">
+      <header class="site-header">
+        <a class="brand" href="index.html">
+          <img src="images/ykp-marine-logo-with-text.png" alt="YKP Marine logo">
+          <span>YKP Marine</span>
+        </a>
+        <nav class="site-nav" data-nav>
+          <a class="nav-link" href="index.html">Anasayfa</a>
+          <a class="nav-link" href="ilanlar.html">İlanlar</a>
+          <a class="nav-link" href="hizmetlerimiz.html">Hizmetlerimiz</a>
+          <a class="nav-link" href="projeler.html">Projeler</a>
+          <a class="nav-link" href="hakkimizda.html">Hakkımızda</a>
+          <a class="nav-link is-active" href="iletisim.html">İletişim</a>
+          <div class="nav-cta">
+            <a class="btn primary" href="iletisim.html">Teklif Al</a>
+            <a class="btn ghost" href="ilanlar.html">İlanları Gör</a>
+          </div>
+        </nav>
+        <div class="header-actions">
+          <a class="btn light header-cta" href="iletisim.html">Teklif Al</a>
+          <button class="nav-toggle" type="button" data-nav-toggle aria-label="Menüyü aç" aria-expanded="false">
+            <span></span>
+          </button>
+        </div>
+      </header>
+      <div class="nav-overlay" data-nav-overlay></div>
+
+      <main>
+        <section class="page-hero" data-reveal>
+          <div class="eyebrow">İletişim</div>
+          <h1>Projenizi konuşalım</h1>
+          <p>İnşa, refit veya bakım talepleriniz için formu doldurun; ekiplerimiz en kısa sürede dönüş yapsın.</p>
+        </section>
+
+        <section class="section" data-reveal>
+          <div class="about-grid">
+            <div class="contact-card reveal" data-reveal>
+              <h3>İletişim Bilgileri</h3>
+              <p>Tuzla Tersaneler Bölgesi, İstanbul</p>
+              <p>+90 216 000 00 00</p>
+              <p>info@ykpmarine.com.tr</p>
+              <div class="listing-meta">
+                <span>Hafta içi: 09:00 - 18:30</span>
+                <span>Acil servis: 7/24</span>
+              </div>
+            </div>
+            <div class="contact-card reveal" data-reveal>
+              <h3>Proje Talep Formu</h3>
+              <form>
+                <div class="form-grid">
+                  <label>
+                    Ad Soyad
+                    <input class="input" type="text" name="full_name" placeholder="Adınızı yazın" required>
+                  </label>
+                  <label>
+                    E-posta
+                    <input class="input" type="email" name="email" placeholder="ornek@mail.com" required>
+                  </label>
+                  <label>
+                    Telefon
+                    <input class="input" type="tel" name="phone" placeholder="+90 5xx xxx xx xx">
+                  </label>
+                  <label>
+                    Talep Türü
+                    <select class="select" name="service">
+                      <option>Yeni İnşa</option>
+                      <option>Refit</option>
+                      <option>Bakım</option>
+                      <option>Danışmanlık</option>
+                    </select>
+                  </label>
+                  <label class="form-full">
+                    Proje Detayı
+                    <textarea class="input" name="details" placeholder="Yat boyu, hedef teslim tarihi, ek istekler"></textarea>
+                  </label>
+                </div>
+                <div class="hero-actions">
+                  <button class="btn primary" type="submit">Gönder</button>
+                  <button class="btn ghost" type="reset">Temizle</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </section>
+
+        <section class="section" data-reveal>
+          <div class="section-header">
+            <div>
+              <h2 class="section-title">Konum</h2>
+              <p class="section-subtitle">Tersane ve ofis lokasyonumuz için aşağıdaki harita alanını kullanabilirsiniz.</p>
+            </div>
+          </div>
+          <div class="map-placeholder"></div>
+        </section>
+      </main>
+
+      <footer class="footer">
+        <div class="footer-grid">
+          <div>
+            <h4>YKP Marine</h4>
+            <p>Yat inşa, refit ve bakım hizmetlerinde uzmanlaşmış tersane ve proje yönetimi markası.</p>
+          </div>
+          <div>
+            <h4>Hızlı Menü</h4>
+            <a href="ilanlar.html">İlanlar</a><br>
+            <a href="hizmetlerimiz.html">Hizmetlerimiz</a><br>
+            <a href="projeler.html">Projeler</a>
+          </div>
+          <div>
+            <h4>İletişim</h4>
+            <p>Tuzla, İstanbul</p>
+            <p>+90 216 000 00 00</p>
+            <p>info@ykpmarine.com.tr</p>
+          </div>
+        </div>
+        <div class="footer-note">(c) 2025 YKP Marine. Tüm hakları saklıdır.</div>
+      </footer>
+    </div>
+  </div>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
