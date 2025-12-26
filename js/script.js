@@ -1,5 +1,44 @@
 document.documentElement.classList.add('js-enabled');
 
+const themeToggle = document.querySelector('[data-theme-toggle]');
+const themeStorageKey = 'ykpTheme';
+
+const applyTheme = (theme) => {
+  const isDark = theme === 'dark';
+  document.documentElement.classList.toggle('theme-dark', isDark);
+  themeToggle?.setAttribute('aria-pressed', String(isDark));
+};
+
+const storedTheme = localStorage.getItem(themeStorageKey);
+const prefersDark = window.matchMedia
+  ? window.matchMedia('(prefers-color-scheme: dark)').matches
+  : false;
+applyTheme(storedTheme || (prefersDark ? 'dark' : 'light'));
+
+themeToggle?.addEventListener('click', () => {
+  const isDark = document.documentElement.classList.contains('theme-dark');
+  const nextTheme = isDark ? 'light' : 'dark';
+  localStorage.setItem(themeStorageKey, nextTheme);
+  applyTheme(nextTheme);
+});
+
+const mediaQuery = window.matchMedia
+  ? window.matchMedia('(prefers-color-scheme: dark)')
+  : null;
+if (mediaQuery) {
+  const handleChange = (event) => {
+    if (localStorage.getItem(themeStorageKey)) {
+      return;
+    }
+    applyTheme(event.matches ? 'dark' : 'light');
+  };
+  if (mediaQuery.addEventListener) {
+    mediaQuery.addEventListener('change', handleChange);
+  } else if (mediaQuery.addListener) {
+    mediaQuery.addListener(handleChange);
+  }
+}
+
 const body = document.body;
 const navToggle = document.querySelector('[data-nav-toggle]');
 const nav = document.querySelector('[data-nav]');
@@ -50,38 +89,7 @@ if (listingSection) {
 
   const apiUrl = '/api/public/listings';
 
-  const fallbackListings = [
-    {
-      id: 'fallback_aurora_48',
-      title: 'Aurora 48',
-      segment: 'ins',
-      location: 'Tuzla',
-      year: 2025,
-      status: 'Teklifte',
-      coverImage: 'images/concepts/yacht_2.jpg',
-      highlights: ['Alüminyum Gövde', 'Özel İç Mekan'],
-    },
-    {
-      id: 'fallback_ege_refit_32',
-      title: 'Ege Refit 32',
-      segment: 'refit',
-      location: 'Göcek',
-      year: 2024,
-      status: 'Aktif',
-      coverImage: 'images/concepts/yacht_4.jpg',
-      highlights: ['Makine Revizyonu', 'Güverte Yenileme'],
-    },
-    {
-      id: 'fallback_marmara_bakim_24',
-      title: 'Marmara Bakım 24',
-      segment: 'bakim',
-      location: 'İstanbul',
-      year: 2024,
-      status: 'Planlandı',
-      coverImage: 'images/concepts/yacht_6.jpg',
-      highlights: ['Boya', 'Elektrik Sistemleri'],
-    },
-  ];
+  const fallbackListings = [];
 
   let listings = [];
   let hasApiError = false;

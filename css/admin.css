@@ -79,3 +79,23 @@
 .admin-item .admin-actions {
   margin-top: 6px;
 }
+
+.theme-dark .admin-card,
+.theme-dark .admin-item {
+  background: rgba(8, 20, 28, 0.96);
+  color: var(--ink);
+}
+
+.theme-dark .admin-card label,
+.theme-dark .admin-note,
+.theme-dark .admin-status,
+.theme-dark .admin-item .meta {
+  color: var(--ink-soft);
+}
+
+.theme-dark .admin-card .input,
+.theme-dark .admin-card .select {
+  background: rgba(7, 20, 28, 0.75);
+  border-color: rgba(255, 255, 255, 0.12);
+  color: var(--ink);
+}
