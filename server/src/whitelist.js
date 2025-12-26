@@ -1,3 +1,5 @@
+const crypto = require('crypto');
+
 const parseList = (value) =>
   value
     ? value
@@ -7,7 +9,11 @@ const parseList = (value) =>
     : [];
 
 const whitelistKeys = parseList(process.env.WHITELIST_KEYS);
+const whitelistKeyHashes = parseList(process.env.WHITELIST_KEY_HASHES);
 const whitelistIps = parseList(process.env.WHITELIST_IPS);
+
+const hashKey = (value) =>
+  crypto.createHash('sha256').update(value).digest('hex');
 
 const extractKey = (req) => {
   const headerKey = req.get('x-api-key');
@@ -23,13 +29,23 @@ const extractKey = (req) => {
 };
 
 const isWhitelisted = (req) => {
-  if (whitelistKeys.length === 0 && whitelistIps.length === 0) {
+  if (
+    whitelistKeys.length === 0 &&
+    whitelistKeyHashes.length === 0 &&
+    whitelistIps.length === 0
+  ) {
     return false;
   }
 
   const key = extractKey(req);
-  if (key && whitelistKeys.includes(key)) {
-    return true;
+  if (key) {
+    const keyHash = hashKey(key);
+    if (whitelistKeyHashes.includes(keyHash)) {
+      return true;
+    }
+    if (whitelistKeys.includes(key)) {
+      return true;
+    }
   }
 
   if (whitelistIps.length > 0) {

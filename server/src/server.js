@@ -19,6 +19,16 @@ const allowPublicRead = process.env.ALLOW_PUBLIC_READ !== 'false';
 const publicWriteRequiresWhitelist =
   process.env.PUBLIC_WRITE_REQUIRES_WHITELIST === 'true';
 
+const parseList = (value) =>
+  value
+    ? value
+        .split(',')
+        .map((item) => item.trim())
+        .filter(Boolean)
+    : [];
+
+const keygenAllowedIps = parseList(process.env.KEYGEN_ALLOWED_IPS);
+
 const data = loadData();
 
 const ensureArray = (value) => (Array.isArray(value) ? value : []);
@@ -121,6 +131,19 @@ const normalizeSegment = (segment) => {
 };
 
 const findListing = (id) => data.listings.find((listing) => listing.id === id);
+
+const normalizeIp = (ip) => (ip.startsWith('::ffff:') ? ip.slice(7) : ip);
+
+const isKeygenIpAllowed = (req) => {
+  if (keygenAllowedIps.length === 0) {
+    return false;
+  }
+  const rawIp = req.socket?.remoteAddress || '';
+  const normalizedIp = normalizeIp(rawIp);
+  return (
+    keygenAllowedIps.includes(rawIp) || keygenAllowedIps.includes(normalizedIp)
+  );
+};
 
 const publicReadGate = (req, res, next) => {
   if (allowPublicRead) {
@@ -341,6 +364,23 @@ app.delete('/api/public/listings/:id/follow', publicWriteGate, (req, res) => {
   saveData();
 
   res.json({ unfollowed: true });
+});
+
+app.post('/api/admin/keys', requireWhitelist, (req, res) => {
+  if (!isKeygenIpAllowed(req)) {
+    res.status(403).json({
+      error: 'Bu IP icin anahtar uretimi kapali.',
+    });
+    return;
+  }
+
+  const rawKey = `ykp_${crypto.randomBytes(24).toString('hex')}`;
+  const hash = crypto.createHash('sha256').update(rawKey).digest('hex');
+
+  res.status(201).json({
+    apiKey: rawKey,
+    sha256: hash,
+  });
 });
 
 app.get('/api/admin/listings', requireWhitelist, (req, res) => {
