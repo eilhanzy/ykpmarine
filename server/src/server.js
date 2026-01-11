@@ -1,10 +1,26 @@
+const fs = require('fs');
 const path = require('path');
 const crypto = require('crypto');
 const express = require('express');
+const dotenv = require('dotenv');
 
-require('dotenv').config({
-  path: path.join(__dirname, '..', '.env'),
-});
+const resolveEnvPath = () => {
+  const candidates = [
+    process.env.ENV_FILE,
+    path.join(__dirname, '..', '..', 'app.env'),
+    path.join(__dirname, '..', '..', '.env'),
+    path.join(__dirname, '..', '.env'),
+  ].filter(Boolean);
+
+  return candidates.find((candidate) => fs.existsSync(candidate));
+};
+
+const envPath = resolveEnvPath();
+if (envPath) {
+  dotenv.config({ path: envPath });
+} else {
+  dotenv.config();
+}
 
 const { loadData, saveData } = require('./store');
 const { requireWhitelist, isWhitelisted } = require('./whitelist');

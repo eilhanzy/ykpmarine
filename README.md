@@ -46,6 +46,8 @@ RunTipi icin `docker-compose.yml` dosyasini kullanabilirsiniz. Ortam degiskenler
 
 ## API Ortami (.env)
 
+Uygulama `app.env` (RunTipi UI) veya `.env` dosyasini otomatik okur. Oncelik sirasi: `app.env` -> `.env` (proje kok) -> `server/.env`.
+
 ```bash
 PORT=3000
 ALLOW_PUBLIC_READ=true

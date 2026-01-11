@@ -9,6 +9,8 @@ npm install
 npm start
 ```
 
+Uygulama `app.env` (RunTipi UI) veya `.env` dosyasini otomatik okur.
+
 ## Yonetim (Whitelist)
 
 - `WHITELIST_KEYS`: Virgulle ayrilan API anahtarlari.
