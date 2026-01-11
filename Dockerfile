@@ -12,7 +12,8 @@ RUN cd server && npm install --omit=dev
 
 COPY . .
 
-RUN mkdir -p /run/nginx
+RUN mkdir -p /run/nginx /tmp/nginx
+COPY nginx/nginx.conf /etc/nginx/nginx.conf
 COPY nginx/default.conf /etc/nginx/conf.d/default.conf
 
 EXPOSE 3000
