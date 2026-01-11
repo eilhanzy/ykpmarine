@@ -113,12 +113,18 @@ const renderMessages = (messages) => {
 
   messageContainer.innerHTML = messages
     .map((message) => {
+      const serviceLine = message.service ? `<span>Talep Turu: ${message.service}</span>` : '';
+      const sourceLine = message.type === 'contact'
+        ? '<span>Kaynak: Iletisim Formu</span>'
+        : '';
       return `
         <div class="admin-item">
           <strong>${message.listingTitle || 'Ilan'}</strong>
           <div class="meta">
+            ${sourceLine}
             <span>Gonderen: ${message.name} (${message.email})</span>
             ${message.phone ? `<span>Telefon: ${message.phone}</span>` : ''}
+            ${serviceLine}
             <span>Mesaj: ${message.message}</span>
             <span>Tarih: ${message.createdAt}</span>
           </div>

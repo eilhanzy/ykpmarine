@@ -294,6 +294,44 @@ app.post('/api/public/listings/:id/messages', publicWriteGate, async (req, res) 
   });
 });
 
+app.post('/api/public/contact/messages', publicWriteGate, async (req, res) => {
+  const { name, email, phone, service, message, details } = req.body || {};
+  const finalMessage = message || details;
+
+  if (!name || !email || !finalMessage) {
+    res.status(400).json({ error: 'Ad, e-posta ve mesaj gerekli.' });
+    return;
+  }
+
+  const newMessage = {
+    id: `msg_${crypto.randomUUID()}`,
+    listingId: null,
+    type: 'contact',
+    name: String(name).trim(),
+    email: String(email).trim(),
+    phone: phone ? String(phone).trim() : '',
+    service: service ? String(service).trim() : '',
+    message: String(finalMessage).trim(),
+    createdAt: nowIso(),
+    ip: req.ip,
+    status: 'new',
+  };
+
+  data.messages.push(newMessage);
+  saveData();
+
+  try {
+    await sendMessageNotification({ listing: { title: 'Iletisim Formu' }, message: newMessage });
+  } catch (error) {
+    console.log('Mail gonderimi basarisiz:', error.message);
+  }
+
+  res.status(201).json({
+    message: 'Mesajiniz alindi. En kisa surede size donus yapilacak.',
+    id: newMessage.id,
+  });
+});
+
 app.post('/api/public/listings/:id/comments', publicWriteGate, (req, res) => {
   const listing = findListing(req.params.id);
   if (!listing) {
@@ -539,7 +577,10 @@ app.get('/api/admin/messages', requireWhitelist, (req, res) => {
     .filter((message) => (listingId ? message.listingId === listingId : true))
     .map((message) => ({
       ...message,
-      listingTitle: listingMap.get(message.listingId) || 'Ilan silinmis',
+      listingTitle:
+        message.type === 'contact'
+          ? 'Iletisim Formu'
+          : listingMap.get(message.listingId) || 'Ilan silinmis',
     }))
     .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
 

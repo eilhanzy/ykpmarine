@@ -760,6 +760,16 @@ button {
   color: var(--ink-soft);
 }
 
+.form-status {
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+  margin-top: 10px;
+}
+
+.form-status.is-error {
+  color: #b23a2b;
+}
+
 .form-grid .form-full {
   grid-column: 1 / -1;
 }

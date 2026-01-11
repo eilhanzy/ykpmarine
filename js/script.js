@@ -280,3 +280,54 @@ if (listingSection) {
 
   loadListings();
 }
+
+const contactForm = document.querySelector('[data-contact-form]');
+if (contactForm) {
+  const statusEl = contactForm.querySelector('[data-contact-status]');
+
+  const setStatus = (text, isError = false) => {
+    if (!statusEl) {
+      return;
+    }
+    statusEl.textContent = text;
+    statusEl.classList.toggle('is-error', isError);
+  };
+
+  contactForm.addEventListener('submit', async (event) => {
+    event.preventDefault();
+
+    const formData = new FormData(contactForm);
+    const payload = {
+      name: formData.get('full_name')?.toString().trim(),
+      email: formData.get('email')?.toString().trim(),
+      phone: formData.get('phone')?.toString().trim(),
+      service: formData.get('service')?.toString().trim(),
+      message: formData.get('details')?.toString().trim(),
+    };
+
+    if (!payload.name || !payload.email || !payload.message) {
+      setStatus('Lutfen ad, e-posta ve mesaj alanlarini doldurun.', true);
+      return;
+    }
+
+    setStatus('Mesajiniz gonderiliyor...');
+
+    try {
+      const response = await fetch('/api/public/contact/messages', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+
+      if (!response.ok) {
+        const data = await response.json().catch(() => ({}));
+        throw new Error(data?.error || 'Gonderim basarisiz.');
+      }
+
+      contactForm.reset();
+      setStatus('Mesajiniz alindi. En kisa surede size donus yapilacak.');
+    } catch (error) {
+      setStatus(error.message || 'Mesaj gonderilemedi.', true);
+    }
+  });
+}

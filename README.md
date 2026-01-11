@@ -98,6 +98,7 @@ Public:
 - `GET /api/public/listings`
 - `GET /api/public/listings/:id`
 - `POST /api/public/listings/:id/messages`
+- `POST /api/public/contact/messages`
 - `POST /api/public/listings/:id/comments`
 - `POST /api/public/listings/:id/follow`
 - `DELETE /api/public/listings/:id/follow`
