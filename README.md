@@ -27,6 +27,8 @@ Sunucu calistiginda:
 
 ## Docker
 
+Docker imaji Nginx ile statik dosyalari servis eder ve `/api` isteklerini Node.js'e yonlendirir.
+
 ```bash
 docker build -t ykp-marine .
 docker run --name ykp-marine -p 3000:3000 --env-file server/.env ykp-marine
