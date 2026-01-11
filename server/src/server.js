@@ -7,9 +7,19 @@ const dotenv = require('dotenv');
 const resolveEnvPath = () => {
   const candidates = [
     process.env.ENV_FILE,
+    process.env.APP_ENV_PATH,
+    process.env.DOTENV_CONFIG_PATH,
+    process.env.TIPI_APP_ENV,
+    path.join(process.cwd(), 'app.env'),
+    path.join(process.cwd(), '.env'),
     path.join(__dirname, '..', '..', 'app.env'),
     path.join(__dirname, '..', '..', '.env'),
+    path.join(__dirname, '..', 'app.env'),
     path.join(__dirname, '..', '.env'),
+    '/app/app.env',
+    '/data/app.env',
+    '/app/data/app.env',
+    '/config/app.env',
   ].filter(Boolean);
 
   return candidates.find((candidate) => fs.existsSync(candidate));

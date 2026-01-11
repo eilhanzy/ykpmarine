@@ -10,6 +10,7 @@ npm start
 ```
 
 Uygulama `app.env` (RunTipi UI) veya `.env` dosyasini otomatik okur.
+RunTipi farkli bir dizine yaziyorsa `ENV_FILE` veya `APP_ENV_PATH` degiskeni ile dosya yolunu belirtebilirsiniz.
 
 ## Yonetim (Whitelist)
 
