@@ -25,6 +25,23 @@ Sunucu calistiginda:
 - Site: `http://localhost:3000/`
 - Admin panel: `http://localhost:3000/admin.html`
 
+## Docker
+
+```bash
+docker build -t ykp-marine .
+docker run --name ykp-marine -p 3000:3000 --env-file server/.env ykp-marine
+```
+
+Veri kaliciligi icin `server/data` dizinini volume olarak baglayabilirsiniz.
+
+## Docker Compose / RunTipi
+
+```bash
+docker compose up -d --build
+```
+
+RunTipi icin `docker-compose.yml` dosyasini kullanabilirsiniz. Ortam degiskenleri icin `server/.env` dosyasini olusturun.
+
 ## API Ortami (.env)
 
 ```bash
